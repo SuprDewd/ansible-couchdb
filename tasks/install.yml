@@ -49,13 +49,12 @@
 
 - name: setup admins
   become: yes
-  lineinfile:
-    dest: /opt/couchdb/etc/local.ini
-    state: present
-    line: "{{ item.key }} = {{ item.value }}"
-    regexp: "^{{ item.key }} = "
-    insertafter: "^\\[admins\\]$"
-  with_dict: "{{ couchdb_admins }}"
+  template:
+      src: admins.ini
+      dest: /opt/couchdb/etc/local.d/10-admins.ini
+      mode: 0770
+      owner: couchdb
+      group: couchdb
   notify: restart couchdb
 
 - name: create configuration file
