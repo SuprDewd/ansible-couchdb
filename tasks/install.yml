@@ -17,12 +17,13 @@
     state: stopped
   when: couchdb_install.changed
 
-- name: change owner of couchdb executable
+- name: create link to couchdb executable
   file:
-    state: file
+    state: link
     mode: 0770
     owner: couchdb
     group: couchdb
+    src: /opt/couchdb/bin/couchdb
     path: /usr/bin/couchdb
   when: couchdb_install.changed
 
