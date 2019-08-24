@@ -36,7 +36,7 @@
   with_items:
     - /usr/lib/couchdb
     - /usr/share/couchdb
-    - /etc/couchdb
+    - /opt/couchdb
   when: couchdb_install.changed
 
 - name: start couchdb
@@ -49,7 +49,7 @@
 - name: setup admins
   become: yes
   lineinfile:
-    dest: /etc/couchdb/local.ini
+    dest: /opt/couchdb/etc/local.ini
     state: present
     line: "{{ item.key }} = {{ item.value }}"
     regexp: "^{{ item.key }} = "
@@ -61,7 +61,7 @@
   become: yes
   template:
     src: config.ini
-    dest: /etc/couchdb/local.d/config.ini
+    dest: /opt/couchdb/etc/local.d/config.ini
     mode: 0770
     owner: couchdb
     group: couchdb

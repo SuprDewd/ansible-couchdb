@@ -7,7 +7,7 @@ Variables
 ---------
 
 ### `couchdb_settings`
-CouchDB configuration settings, to be written in an `.ini` file within the `/etc/couchdb/local.d/` directory. This is a two-dimensional dict of settings, where the first level keys represent the section.
+CouchDB configuration settings, to be written in an `.ini` file within the `/opt/couchdb/etc/local.d/` directory. This is a two-dimensional dict of settings, where the first level keys represent the section.
 
 **Note**: boolean values should be written as strings (e.g.: `"true"`) to prevent unwanted capitalization.
 
