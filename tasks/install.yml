@@ -66,3 +66,15 @@
     owner: couchdb
     group: couchdb
   notify: restart couchdb
+
+- name: install vm.args
+  become: yes
+  copy:
+    remote_src: yes
+    src: /opt/couchdb/releases/2.3.1/vm.args # TODO: Make this dynamic
+    dest: /opt/couchdb/etc/vm.args
+    mode: 0770
+    owner: couchdb
+    group: couchdb
+  notify: restart couchdb
+
